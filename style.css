@@ -35,27 +35,6 @@ body{
     width: 1280px;
     height: 720px;
 }
-
-#footer{
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    z-index: 9999;
-}
-
-/* links */
-a:link{
-    color: #f2af29;
-}
-
-a:visited{
-    color: #ffbf00;
-}
-
-a:hover{
-    color: #fed766;
-}
-
 a:active{
     color: #fe7b00;
 }
