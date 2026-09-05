@@ -26,7 +26,7 @@ async function setup () {
 
         status.innerText = "Accessing camera...";
         startCamera();
-    }catch (err){
+    }catch (err) {
         status.innerText = "Error: " + err.message;
         console.error(err);
     }
