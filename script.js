@@ -8,7 +8,7 @@ const status = document.getElementById('status');
 let facedetector;
 let lvt = -1; // avoid duplicate detections
 
-async function setup(){
+async function setup () {
     try{
         status.innerText = "Loading scrambler...";
         
@@ -32,7 +32,7 @@ async function setup(){
     }
 }
 
-async function startCamera(){
+async function startCamera () {
     try{
         const stream = await navigator.mediaDevices.getUserMedia({ video: { width: 1280, height: 720 } });
         video.srcObject = stream;
@@ -42,20 +42,20 @@ async function startCamera(){
             status.innerText = "Scrambler Active";
             renderLoop();
         });
-    }catch (err){
+    }catch (err) {
         status.innerText = "Error: " + err.message;
         console.error(err);
     }
 }
 
-function renderLoop(){
-    if (video.currentTime !== lvt && facedetector){
+function renderLoop () {
+    if (video.currentTime !== lvt && facedetector) {
         lvt = video.currentTime;
         const detections = facedetector.detectForVideo(video, performance.now()).detections;
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        for (const detection of detections){
+        for (const detection of detections) {
             const{ originX, originY, width, height } = detection.boundingBox;
             scrambleeffect(originX, originY, width, height);
         }
@@ -88,7 +88,7 @@ function scrambleeffect(x, y, w, h){
     }
 
     const numCyanBoxes = 3;
-    for (let i = 0; i < numCyanBoxes; i++){
+    for (let i = 0; i < numCyanBoxes; i++) {
         const jitterX = (Math.random() - 0.5) * 30;
         const jitterY = (Math.random() - 0.5) * 30;
         const boxW = w * (0.35 + Math.random() * 0.3);
@@ -107,7 +107,7 @@ function scrambleeffect(x, y, w, h){
     const startX = (X - gridW / 2) + gridJitterX;
     const gridY = Y - h * 0.25 + ((Math.random() - 0.5) * 10);
     
-    for (let lx = startX; lx <= startX + gridW; lx += lineSpacing){
+    for (let lx = startX; lx <= startX + gridW; lx += lineSpacing) {
         ctx.beginPath();
         ctx.moveTo(lx, gridY);
         ctx.lineTo(lx, gridY + (h * 0.15));
