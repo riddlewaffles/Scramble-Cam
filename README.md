@@ -1,6 +1,6 @@
 # Scramble-Cam
 
-### Low level face detection program that hides your face when detected. 
+### Experimental face detection program that hides your face when detected. 
 ### Future plans:
 * Improved face scrambling system.
 * Customizable face detection.
